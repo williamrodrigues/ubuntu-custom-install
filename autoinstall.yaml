@@ -10,6 +10,47 @@ autoinstall:
   keyboard:
     layout: eng
   timezone: "America/Sao_Paulo"
+  disk:
+    layout:
+      - name: gpt
+        type: gpt
+        device: /dev/nvme0n1
+        partitions:
+          - label: primary
+            number: 1
+            size: 120GB
+            filesystem: btrfs
+            path: /
+            wipe: superblock
+          - label: primary
+            number: 2
+            size: 376GB
+            filesystem: btrfs
+            path: /home
+            wipe: superblock
+          - label: primary
+            number: 3
+            size: 16GB
+            filesystem: swap
+            wipe: superblock
+    filesystems:
+      - device: /dev/nvme0n1p1
+        filesystem: btrfs
+        label: root
+      - device: /dev/nvme0n1p2
+        filesystem: btrfs
+        label: home
+      - device: /dev/nvme0n1p3
+        filesystem: swap
+        label: swap
+    mounts:
+      - mount_point: /
+        device: /dev/nvme0n1p1
+      - mount_point: /home
+        device: /dev/nvme0n1p2
+      - mount_point: none
+        device: /dev/nvme0n1p3
+        type: swap
   packages:
     - libreoffice
     - gimp
