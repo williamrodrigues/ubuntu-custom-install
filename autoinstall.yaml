@@ -1,0 +1,76 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    realname: 'William Cesar Rodrigues'
+    hostname: mytuf-gamming
+    username: williamrodrigues
+    password: '$y$j9T$3yp0Kkl8dq4CbwHZ6KZ1G1$n.csE1bw9NsWu/D/xx5Q6dfQuCZGNnvcMmoE8b7YsI5'
+  locale: pt_BR.utf8
+  keyboard:
+    layout: eng
+  timezone: "America/Sao_Paulo"
+  packages:
+    - libreoffice
+    - gimp
+    - git
+    - wget
+    - curl
+    - coreutils
+    - nano
+    - htop
+    - build-essential
+    - net-tools
+    - traceroute
+    - gnome-tweaks
+    - gnome-shell-extensions
+    - flameshot
+    - filezilla
+  snaps:
+      - name: spotify
+        channel: stable
+        classic: false
+  codecs:
+    install: true
+  drivers:
+    install: true
+  updates: all
+  runcmd:
+    - [ apt, update, -y ]
+    ## Git
+    - [ apt, install, -y, git-flow ]
+    - [ apt, install, -y, git-lfs ]
+    - [ /usr/bin/git, lfs, install ]
+    ## ASDF
+    - [ wget, -O, /tmp/install_asdf.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/asdf.sh" ]
+    - [ chmod, "+x", /tmp/install_asdf.sh ]
+    - [ /tmp/install_asdf.sh ]
+    ## JENV
+    - [ wget, -O, /tmp/install_jdk_jenv.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/jdk_jenv.sh" ]
+    - [ chmod, "+x", /tmp/install_jdk_jenv.sh ]
+    - [ /tmp/install_jdk_jenv.sh ]
+    ## MAVEN
+    - [ wget, -O, /tmp/install_maven.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/maven.sh" ]
+    - [ chmod, "+x", /tmp/install_maven.sh ]
+    - [ /tmp/install_maven.sh ]
+    ## Docker
+    - [ wget, -O, /tmp/install_docker.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/docker.sh" ]
+    - [ chmod, "+x", /tmp/install_docker.sh ]
+    - [ /tmp/install_docker.sh ]
+    ## Google Chrome
+    - [ wget, -O, /tmp/install_chrome.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/chrome.sh" ]
+    - [ chmod, "+x", /tmp/install_chrome.sh ]
+    - [ /tmp/install_chrome.sh ]
+    ## VS Code
+    - [ wget, -O, /tmp/install_code.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/code.sh" ]
+    - [ chmod, "+x", /tmp/install_code.sh ]
+    - [ /tmp/install_code.sh ]
+    ## Spring Tools Suite
+    - [ wget, -O, /tmp/install_sts.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/sts.sh" ]
+    - [ chmod, "+x", /tmp/install_sts.sh ]
+    - [ /tmp/install_sts.sh ]
+    ## Azure Data Studio
+    - [ wget, -O, /tmp/install_ads.sh, "https://raw.githubusercontent.com/williamrodrigues/ubuntu-custom-install/main/install/ads.sh" ]
+    - [ chmod, "+x", /tmp/install_ads.sh ]
+    - [ /tmp/install_ads.sh ]
+shutdown: reboot
