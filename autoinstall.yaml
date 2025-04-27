@@ -8,7 +8,8 @@ autoinstall:
     password: '$y$j9T$3yp0Kkl8dq4CbwHZ6KZ1G1$n.csE1bw9NsWu/D/xx5Q6dfQuCZGNnvcMmoE8b7YsI5'
   locale: pt_BR.utf8
   keyboard:
-    layout: eng
+    layout: us
+    variant: intl
   timezone: "America/Sao_Paulo"
   disk:
     layout:
