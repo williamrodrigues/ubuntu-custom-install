@@ -14,7 +14,7 @@ autoinstall:
     layout:
       - name: gpt
         type: gpt
-        device: /dev/nvme0n1
+        device: /dev/nvme1n1p1
         partitions:
           - label: primary
             number: 1
@@ -34,7 +34,7 @@ autoinstall:
             filesystem: swap
             wipe: superblock
     filesystems:
-      - device: /dev/nvme0n1p1
+      - device: /dev/nvme1n1p1
         filesystem: btrfs
         label: root
       - device: /dev/nvme0n1p2
@@ -45,7 +45,7 @@ autoinstall:
         label: swap
     mounts:
       - mount_point: /
-        device: /dev/nvme0n1p1
+        device: /dev/nvme1n1p1
       - mount_point: /home
         device: /dev/nvme0n1p2
       - mount_point: none
